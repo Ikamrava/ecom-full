@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import React, { useContext } from 'react'
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
-import { CartContext } from './CartContext';
+import { CartContext } from './Cart.context';
 
 function NewProducts({data}) {
 

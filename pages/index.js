@@ -3,6 +3,9 @@ import Head from 'next/head'
 import clientPromise from '../lib/mongodb'
 import Header from './components/Header'
 import Feature from './components/Feature'
+import AllProducts from './components/AllProducts'
+
+
 
 export const getServerSideProps = async () => {
 
@@ -84,6 +87,7 @@ export default  function Home({products,product}) {
       <main>
         <Header/> 
         <Feature data={product}/>
+        <AllProducts data={products}/>
       </main>
 
      
