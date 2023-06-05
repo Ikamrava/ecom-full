@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 // import { CartContext } from './CartContext';
-import { CartContext } from './components/Cart.context';
+import { CartContext } from './Cart.context';
 
 
 

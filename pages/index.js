@@ -1,23 +1,44 @@
+
 import Head from 'next/head'
 import clientPromise from '../lib/mongodb'
-import Header from './Header'
+import Header from './components/Header'
+import Feature from './components/Feature'
 
 export const getServerSideProps = async () => {
 
 
   try {
-    await clientPromise
-    // `await clientPromise` will use the default database passed in the MONGODB_URI
-    // However you can use another database (e.g. myDatabase) by replacing the `await clientPromise` with the following code:
-    //
-    // `const client = await clientPromise`
-    // `const db = client.db("myDatabase")`
-    //
-    // Then you can execute queries against your database like so:
-    // db.find({}) or any of the MongoDB Node Driver commands
+
+    // const res = await fetch(process.env.API_URL + '/api/products');
+    
+    
+   
+    const featuredId =  "6474cd6e46b89b5d43bc7318"
+    const client = await clientPromise;
+       const db = client.db("test");
+
+       const products = await db
+           .collection("products")
+           .find({})
+           .sort({ metacritic: -1 })
+           .toArray();
+   
+
+    // Recommendation: handle errors
+
+
+    
+   
+    
+    
 
     return {
-      props: { isConnected: true },
+      props: { 
+        isConnected: true,
+        products: JSON.parse(JSON.stringify(products)),
+        product: JSON.parse(JSON.stringify(products.find(product => product._id == featuredId)))
+
+       },
     }
   } catch (e) {
     console.error(e)
@@ -27,9 +48,32 @@ export const getServerSideProps = async () => {
   }
 }
 
-export default function Home({
-  isConnected,
-}) {
+
+// async function getData() {
+//   const res = await fetch(process.env.API_URL + '/api/products');
+  
+ 
+ 
+//   // Recommendation: handle errors
+//   if (!res.ok) {
+//     console.log('Failed to fetch data');
+//   }
+ 
+//   return res.json();
+// }
+
+
+
+export default  function Home({products,product}) {
+  console.log(product)
+  
+
+  // const products = await getData();
+  // console.log(products.data)
+
+
+
+
   return (
     <div className="container">
       <Head>
@@ -38,7 +82,8 @@ export default function Home({
       </Head>
 
       <main>
-        <Header/>
+        <Header/> 
+        <Feature data={product}/>
       </main>
 
      
