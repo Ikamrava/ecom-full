@@ -10,6 +10,7 @@ import { CartContext } from './Cart.context';
 
 function Header() {
   const {cart} = useContext(CartContext)
+
   
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -19,7 +20,7 @@ function Header() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
           <Nav.Link href="/">Home</Nav.Link>
-           <Nav.Link href="/cart" className={cart.length>0 ? "text-white": null}>Cart ({cart.length}) </Nav.Link> 
+           <Nav.Link href={`/cart?ids=${cart}`} className={cart.length>0 ? "text-white": null}>Cart ({cart.length}) </Nav.Link> 
           </Nav>
           <Nav>
           {cart.length>0 ?

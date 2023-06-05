@@ -1,16 +1,51 @@
-import React, { useContext } from 'react'
-import Cart from "../pages/components/Cart"
-import { CartContext } from './components/Cart.context';
-import { BsTypeH1 } from 'react-icons/bs';
+import { useContext } from "react"
+import clientPromise from "../lib/mongodb"
+
+import Cart from "./components/Cart"
+
+
+
+
 
 
    
 
-function cart() {
+function cart({products}) {
+  
+
   return (
-    <h1>Hello</h1>
-    // <Cart/>
+   
+    <Cart cartData={products} />
   )
 }
 
 export default cart
+
+export const getServerSideProps = async (context) => {
+const ids = await (context.query.ids)
+const arrayIds = ids.split(',')
+console.log(arrayIds)
+
+
+    const client = await clientPromise;
+       const db = client.db("test");
+       const products = await db
+           .collection("products")
+           .find({})
+           .toArray();
+        const cartArray = []
+
+          arrayIds.forEach(id => {
+            const product = products.find(product => product._id == id)
+            cartArray.push(product)
+          })
+        
+
+    return {
+      props: { 
+        isConnected: true,
+        products: JSON.parse(JSON.stringify(cartArray)),
+        
+       }
+      }
+}

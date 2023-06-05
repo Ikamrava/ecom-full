@@ -1,44 +1,36 @@
 "use client"
 import React, { useContext, useEffect, useState } from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap'
-import Link from 'next/link'
-import axios from 'axios'
+
 import { AiFillPlusCircle } from 'react-icons/ai';
 import { IoIosRemoveCircle } from 'react-icons/io';
 import { CartContext } from './Cart.context';
 import Header from "./Header"
 import PaymentInfo from "./PaymentInfo"
-import { get } from 'http';
-import clientPromise from '../../lib/mongodb';
 
 
 
 
 
-function Cart() {
 
+
+function Cart({cartData}) {
+  
 
 
     const {cart,setCart,addToCart,removeFromCart} = useContext(CartContext)
-  
 
-    const [products,setProducts] = useState([])
+    const [products,setProducts] = useState(cartData || [])
   
       
       // useEffect(() => {
       //   if(cart.length > 0){
-          
-      //     axios.post(`api/cart`, {ids:cart})
-      //    .then(res => {
-          
-      //      setProducts(res.data)
-      //    })
-   
+      //      setProducts(cartData)
+    
       //   }else{
       //     setProducts([])
         
       //   }
-        
         
       //  },[cart])
 
@@ -102,7 +94,7 @@ function Cart() {
 
             </Col>
             <Col >
-               <PaymentInfo products={products} total={total}></PaymentInfo>
+               {/* <PaymentInfo products={products} total={total}></PaymentInfo> */}
             </Col>
 
           </Row>
