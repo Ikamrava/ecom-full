@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import clientPromise from '../lib/mongodb'
-
-
-
+import Header from './Header'
 
 export const getServerSideProps = async () => {
+
+
   try {
     await clientPromise
     // `await clientPromise` will use the default database passed in the MONGODB_URI
@@ -38,7 +38,12 @@ export default function Home({
       </Head>
 
       <main>
-        </main>
+        <Header/>
+      </main>
+
+     
+
+      
     </div>
   )
 }
