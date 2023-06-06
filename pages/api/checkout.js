@@ -9,6 +9,7 @@ import Cors from 'cors';
 const stripe = require('stripe')(process.env.API_URL);
 
 export default async function handler(req, res) {
+    console.log(req.body)
 
     const client = await clientPromise;
     const db = client.db("test");
