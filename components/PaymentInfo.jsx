@@ -13,7 +13,7 @@ function PaymentInfo() {
       }
 
     
-      const res = await axios.post(`https://shophouse-three.vercel.app/api/checkout`,{
+      const res = await axios.post(`https://shophouse.ikamdev.co.uk/api/checkout`,{
         products:cart,
         name,
         email,
