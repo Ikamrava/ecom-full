@@ -24,7 +24,7 @@ function Header() {
           </Nav>
           <Nav>
           {cart.length>0 ?
-           <Nav.Link href="/cart"><button className='bg-yellow-300 text-black py-1 px-2 shadow-xl font-bold rounded-lg'>Check-Out</button></Nav.Link>
+           <Nav.Link href={`/cart?ids=${cart}`}><button className='bg-yellow-300 text-black py-1 px-2 shadow-xl font-bold rounded-lg'>Check-Out</button></Nav.Link>
            : null} 
             
           </Nav>

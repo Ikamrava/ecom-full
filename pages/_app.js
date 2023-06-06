@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import '../styles/globals.css'
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import {CartContextProvider} from "../pages/components/Cart.context";
+import CartContextProvider from "../components/Cart.context";
 
 
 

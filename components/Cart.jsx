@@ -21,6 +21,7 @@ function Cart({cartData}) {
     const {cart,setCart,addToCart,removeFromCart} = useContext(CartContext)
 
     const [products,setProducts] = useState(cartData || [])
+
   
       
       // useEffect(() => {
@@ -65,7 +66,7 @@ function Cart({cartData}) {
               <Col><h6 className='font-bold'>Price</h6></Col>
             </Row>
             
-            {products.map((item)=>(
+            {products?.map((item)=>(
               <Row key={item._id} className='   items-center mt-4 border-b-2 border-slate-300 pb-4  '>
                   <Col className='text-center flex items-center justify-center '>
                     <img className='text-center max-w-xs md:max-w-28 md:max-h-28 object-contain rounded-2xl shadow-lg p-2 ' src={item.images[0]} alt="" />
@@ -94,7 +95,7 @@ function Cart({cartData}) {
 
             </Col>
             <Col >
-               {/* <PaymentInfo products={products} total={total}></PaymentInfo> */}
+                <PaymentInfo ></PaymentInfo> 
             </Col>
 
           </Row>

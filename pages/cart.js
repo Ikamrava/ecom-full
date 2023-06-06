@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import clientPromise from "../lib/mongodb"
 
-import Cart from "./components/Cart"
+import Cart from "../components/Cart"
 
 
 
@@ -24,7 +24,7 @@ export default cart
 export const getServerSideProps = async (context) => {
 const ids = await (context.query.ids)
 const arrayIds = ids.split(',')
-console.log(arrayIds)
+
 
 
     const client = await clientPromise;
@@ -39,8 +39,7 @@ console.log(arrayIds)
             const product = products.find(product => product._id == id)
             cartArray.push(product)
           })
-        
-
+      
     return {
       props: { 
         isConnected: true,

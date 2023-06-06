@@ -5,12 +5,7 @@ import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import { CartContext } from './Cart.context';
 
 function NewProducts({data}) {
-
   const {addToCart} = useContext(CartContext)
-
-
-  
-  
   return (
     <div className=' pb-6 px-2 flex mx-auto  mt-3 rounded-2xl items-center justify-center  '>
 

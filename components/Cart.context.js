@@ -1,9 +1,11 @@
 import { createContext, useEffect } from "react";
 import { useState } from 'react';
 
+
 export const CartContext = createContext({})
 
-export function CartContextProvider({children}) {
+export default function CartContextProvider({children}) {
+
     const [cart, setCart] = useState([])
     const [email, setEmail] = useState("")
     const [name,setName] = useState("")
@@ -14,7 +16,7 @@ export function CartContextProvider({children}) {
 
 
     function addToCart(id){
-        console.log(id)
+       
            setCart([...cart,id])
            localStorage.setItem('cart',JSON.stringify([...cart,id]))
       }
@@ -32,7 +34,7 @@ export function CartContextProvider({children}) {
                 return prev
             }  
         })
-        console.log(cart)
+        
         localStorage.setItem('cart',JSON.stringify(cart))
 
         

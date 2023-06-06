@@ -1,9 +1,9 @@
 
 import Head from 'next/head'
 import clientPromise from '../lib/mongodb'
-import Header from './components/Header'
-import Feature from './components/Feature'
-import AllProducts from './components/AllProducts'
+import Header from '../components/Header'
+import Feature from '../components/Feature'
+import AllProducts from '../components/AllProducts'
 
 
 
@@ -52,31 +52,12 @@ export const getServerSideProps = async () => {
 }
 
 
-// async function getData() {
-//   const res = await fetch(process.env.API_URL + '/api/products');
-  
- 
- 
-//   // Recommendation: handle errors
-//   if (!res.ok) {
-//     console.log('Failed to fetch data');
-//   }
- 
-//   return res.json();
-// }
 
 
 
 export default  function Home({products,product}) {
  
   
-
-  // const products = await getData();
-  // console.log(products.data)
-
-
-
-
   return (
     <div className="container">
       <Head>
