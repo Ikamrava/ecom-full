@@ -1,5 +1,5 @@
 import clientPromise from '../../lib/mongodb';
-import Cors from 'cors';
+
 
 
 
