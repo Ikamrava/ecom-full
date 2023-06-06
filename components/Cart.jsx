@@ -22,18 +22,6 @@ function Cart({cartData}) {
 
     const [products,setProducts] = useState(cartData || [])
 
-  
-      
-      // useEffect(() => {
-      //   if(cart.length > 0){
-      //      setProducts(cartData)
-    
-      //   }else{
-      //     setProducts([])
-        
-      //   }
-        
-      //  },[cart])
 
 
     function removeHandler(id){
