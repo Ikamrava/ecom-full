@@ -9,13 +9,8 @@ import AllProducts from '../components/AllProducts'
 
 export const getServerSideProps = async () => {
 
-
   try {
 
-    // const res = await fetch(process.env.API_URL + '/api/products');
-    
-    
-   
     const featuredId =  "6474cd6e46b89b5d43bc7318"
     const client = await clientPromise;
        const db = client.db("test");
@@ -25,16 +20,7 @@ export const getServerSideProps = async () => {
            .find({})
            .sort({ metacritic: -1 })
            .toArray();
-   
-
-    // Recommendation: handle errors
-
-
-    
-   
-    
-    
-
+  
     return {
       props: { 
         isConnected: true,
@@ -52,16 +38,13 @@ export const getServerSideProps = async () => {
 }
 
 
-
-
-
 export default  function Home({products,product}) {
  
   
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>ShopHouse</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
