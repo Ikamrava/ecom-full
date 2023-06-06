@@ -1,24 +1,19 @@
 import clientPromise from '../../lib/mongodb';
 import Cors from 'cors';
-import initMiddleware from '../../lib/init-middleware';
 
 
-const cors = initMiddleware(
-    Cors({
-      methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed HTTP methods
-    })
-  );
+
+
 
 
 const stripe = require('stripe')(process.env.API_URL);
+
 export default async function handler(req, res) {
-    await cors(req, res);
+
     const client = await clientPromise;
     const db = client.db("test");
 
-    if(req.method !== 'POST'){
-        res.status(405).json({message: 'Method not allowed'})
-    }else{
+   
         const {name, email, city,postcode,street,country ,products} = req.body
         const productsIds = products
         const uniqIds = [...new Set(productsIds)]
@@ -87,7 +82,7 @@ export default async function handler(req, res) {
         url: session.url,
     })
        
- }
+
 
 }
 
