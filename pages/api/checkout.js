@@ -3,18 +3,14 @@ import clientPromise from '../../lib/mongodb';
 
 
 
-
-
-
 const stripe = require('stripe')(process.env.API_URL);
-
 export default async function handler(req, res) {
-
-    res.setHeader('Access-Control-Allow-Origin', '*');
     const client = await clientPromise;
     const db = client.db("test");
 
-   
+    if(req.method !== 'POST'){
+        res.status(405).json({message: 'Method not allowed'})
+    }else{
         const {name, email, city,postcode,street,country ,products} = req.body
         const productsIds = products
         const uniqIds = [...new Set(productsIds)]
@@ -83,7 +79,7 @@ export default async function handler(req, res) {
         url: session.url,
     })
        
-
+ }
 
 }
 
