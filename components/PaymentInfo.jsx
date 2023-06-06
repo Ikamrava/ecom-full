@@ -15,7 +15,7 @@ function PaymentInfo() {
     
       const res = await axios.post(`https://shophouse-7wh0zy3s0-ikamrava.vercel.app/api/checkout`,{
         headers: {
-          'Access-Control-Allow-Origin': 'https://yourdomain.com'
+          'Access-Control-Allow-Origin': '*'
         }
       },{
         products:cart,
