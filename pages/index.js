@@ -12,6 +12,8 @@ export const getServerSideProps = async () => {
   try {
 
     const featuredId =  "6474cd6e46b89b5d43bc7318"
+    const query = {};
+    const options = { sort: { _id: 1 } };
     const client = await clientPromise;
        const db = client.db("test");
 
@@ -25,7 +27,7 @@ export const getServerSideProps = async () => {
       props: { 
         isConnected: true,
         products: JSON.parse(JSON.stringify(products)),
-        product: JSON.parse(JSON.stringify(products.find(product => product._id == featuredId)))
+        product: JSON.parse(JSON.stringify(products.findOne(query, options)))
 
        },
     }
